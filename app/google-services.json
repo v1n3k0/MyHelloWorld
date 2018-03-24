@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "350339277333",
+    "firebase_url": "https://my-hello-world-aa894.firebaseio.com",
+    "project_id": "my-hello-world-aa894",
+    "storage_bucket": "my-hello-world-aa894.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350339277333:android:9c8d02c13400b488",
+        "android_client_info": {
+          "package_name": "com.vinicius.myhelloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350339277333-i79u3rd5losctvcd9a0g48un85qf23u0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vinicius.myhelloworld",
+            "certificate_hash": "b25e0ccb824ebdb94e8f7dc1e81398b9ed6440f0"
+          }
+        },
+        {
+          "client_id": "350339277333-8v27orj75c5h1iqokd12q56ohm97ds3b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPFdBKgUYo9odoqVl7KHd59UxSuMf0wic"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350339277333-8v27orj75c5h1iqokd12q56ohm97ds3b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
