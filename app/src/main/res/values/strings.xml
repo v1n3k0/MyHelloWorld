@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My Hello World</string>
+    <string name="hint_edit_nome">Digite seu nome</string>
+    <string name="hint_edit_email">Digite seu e-mail</string>
+    <string name="hint_edit_senha">Digite sua Senha</string>
+    <string name="botao_logar">Logar</string>
+    <string name="titulo">My Hello World?</string>
+    <string name="texto_cadastre">Não tem conta? Cadastre-se</string>
+    <string name="botao_cadastrar">Cadastrar</string>
 </resources>
