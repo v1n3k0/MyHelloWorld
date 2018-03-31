@@ -88,7 +88,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="abrirCadastroUsuario"
+        android:onClick="abreCadastroUsuario"
         android:text="@string/texto_cadastre"
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
