@@ -22,10 +22,10 @@
         android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/image_cadastro" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_cadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_email" />
 
     <Button
-        android:id="@+id/button_cadastrar"
+        android:id="@+id/button_cadastro_cadastrar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
