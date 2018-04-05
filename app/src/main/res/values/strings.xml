@@ -7,4 +7,7 @@
     <string name="titulo">My Hello World?</string>
     <string name="texto_cadastre">Não tem conta? Cadastre-se</string>
     <string name="botao_cadastrar">Cadastrar</string>
+    <string name="item_configuracao">Configurações</string>
+    <string name="item_sair">Sair</string>
+    <string name="item_pesquisa">Pesquisar</string>
 </resources>
