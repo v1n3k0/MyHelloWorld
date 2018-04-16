@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.vinicius.myhelloworld.R;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
+import com.vinicius.myhelloworld.helper.Base64Custom;
+import com.vinicius.myhelloworld.helper.Preferencias;
 import com.vinicius.myhelloworld.model.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
@@ -72,7 +74,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
+
+                    //Salva identificador do usuario nas preferencias
+                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                    String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    preferencias.setIdentificador(identificadorUsuario);
+
                     abreTelaPrincipal();
+
+                    Toast.makeText(LoginActivity.this, "Sucesso ao fazer login", Toast.LENGTH_LONG).show();
                 }else{
 
                     String erroExececao;

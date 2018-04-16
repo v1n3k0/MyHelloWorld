@@ -1,5 +1,6 @@
 package com.vinicius.myhelloworld.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.vinicius.myhelloworld.R;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
+import com.vinicius.myhelloworld.helper.Base64Custom;
+import com.vinicius.myhelloworld.helper.Preferencias;
 import com.vinicius.myhelloworld.model.Usuario;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -69,14 +72,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(CadastroUsuarioActivity.this, "Sucesso ao cadastrar usuário", Toast.LENGTH_LONG).show();
 
-                    //Recupera id do usuario
-                    FirebaseUser usuarioFirebase = task.getResult().getUser();
-                    usuario.setId(usuarioFirebase.getUid());
+                    //Salva usuario com codificador base64
+                    String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                    usuario.setId(identificadorUsuario);
                     usuario.salvar();
 
-                    //Desloga usuario
-                    autenticacao.signOut();
-                    finish();
+                    //Salva identificador do usuario nas preferencias
+                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
+                    preferencias.setIdentificador(identificadorUsuario);
+
+                    abreLoginUsuario();
 
                 }else{
 
@@ -102,6 +107,12 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Abre Activity Login
+    public void abreLoginUsuario(){
+        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
 }
