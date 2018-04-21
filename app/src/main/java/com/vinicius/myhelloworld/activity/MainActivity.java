@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.item_configura:
+            case R.id.item_conta:
+                ContaUsuario();
                 return true;
             case R.id.item_sai:
                 deslogaUsuario();
@@ -177,6 +178,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
         finish();
+    }
+
+    private void ContaUsuario(){
+
+        Intent intent = new Intent(MainActivity.this, ContaActivity.class);
+        startActivity(intent);
     }
 
 }

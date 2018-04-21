@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button          botaoLogar;
     private Usuario         usuario;
     private FirebaseAuth    autenticacao;
+    private ProgressBar     progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +41,14 @@ public class LoginActivity extends AppCompatActivity {
         email       = findViewById(R.id.edit_login_email);
         senha       = findViewById(R.id.edit_login_senha);
         botaoLogar  = findViewById(R.id.button_login_logar);
+        progressBar = findViewById(R.id.progressBar);
 
         botaoLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                botaoLogar.setEnabled(false);
+
                 usuario = new Usuario();
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
@@ -102,6 +108,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Erro: " + erroExececao, Toast.LENGTH_LONG).show();
 
                 }
+
+                progressBar.setVisibility(View.INVISIBLE);
+                botaoLogar.setEnabled(true);
 
             }
         });

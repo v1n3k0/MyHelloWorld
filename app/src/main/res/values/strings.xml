@@ -7,11 +7,12 @@
     <string name="titulo">My Hello World?</string>
     <string name="texto_cadastre">Não tem conta? Cadastre-se</string>
     <string name="botao_cadastrar">Cadastrar</string>
-    <string name="item_configuracao">Configurações</string>
+    <string name="item_conta">Conta</string>
     <string name="item_sair">Sair</string>
     <string name="item_pesquisa">Pesquisar</string>
     <string name="item_adiciona">Adiciona</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_conta">ContaActivity</string>
 </resources>

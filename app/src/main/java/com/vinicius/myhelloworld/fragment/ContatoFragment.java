@@ -1,11 +1,13 @@
 package com.vinicius.myhelloworld.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.vinicius.myhelloworld.R;
+import com.vinicius.myhelloworld.activity.ContatoActivity;
 import com.vinicius.myhelloworld.adapter.ContatoAdapter;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
 import com.vinicius.myhelloworld.helper.Preferencias;
@@ -52,7 +55,7 @@ public class ContatoFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         //Intanciar objeto
@@ -97,6 +100,23 @@ public class ContatoFragment extends Fragment {
 
             }
         };
+
+        //OnClick item da lista
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(getActivity(), ContatoActivity.class);
+
+                //Recuperar contato
+                Contato contato = contatos.get(i);
+
+                //Enviando dados para conversa activity
+                intent.putExtra("contato", contato);
+
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
