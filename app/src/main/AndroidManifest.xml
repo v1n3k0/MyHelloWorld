@@ -26,7 +26,10 @@
         <activity android:name=".activity.ContaActivity" />
         <activity
             android:name=".activity.ContatoActivity"
-            android:parentActivityName=".activity.MainActivity"></activity>
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.ConfiguraActivity"
+            android:label="@string/title_activity_configura"></activity>
     </application>
 
 </manifest>
