@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
 import com.vinicius.myhelloworld.R;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
 import com.vinicius.myhelloworld.helper.Base64Custom;
@@ -79,7 +78,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
                     //Salva identificador do usuario nas preferencias
                     Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
-                    preferencias.setIdentificador(identificadorUsuario);
+                    preferencias.setIdentificador(identificadorUsuario, usuario.getNome());
 
                     abreLoginUsuario();
 

@@ -16,6 +16,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.vinicius.myhelloworld.R;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
 import com.vinicius.myhelloworld.helper.Base64Custom;
@@ -28,8 +32,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText        senha;
     private Button          botaoLogar;
     private Usuario         usuario;
-    private FirebaseAuth    autenticacao;
     private ProgressBar     progressBar;
+
+    private DatabaseReference firebase;
+    private FirebaseAuth    autenticacao;
+    private ValueEventListener valueEventListenerUsuario;
+
+    private String identificadorUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                 usuario = new Usuario();
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
+
                 validaLogin();
             }
         });
@@ -82,13 +92,32 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
 
                     //Salva identificador do usuario nas preferencias
-                    Preferencias preferencias = new Preferencias(LoginActivity.this);
-                    String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
-                    preferencias.setIdentificador(identificadorUsuario);
+                    identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
 
-                    abreTelaPrincipal();
+                    firebase = ConfiguracaoFireBase.getFirebase()
+                            .child("Usuario")
+                            .child(identificadorUsuario);
 
-                    Toast.makeText(LoginActivity.this, "Sucesso ao fazer login", Toast.LENGTH_LONG).show();
+                    //Recupera dados do usuario logado e salva nas preferencias
+                    valueEventListenerUsuario = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            Usuario usuarioRecuperado = dataSnapshot.getValue(Usuario.class);
+
+                            Preferencias preferencias = new Preferencias(LoginActivity.this);
+                            preferencias.setIdentificador(identificadorUsuario, usuarioRecuperado.getNome());
+
+                            abreTelaPrincipal();
+                            Toast.makeText(LoginActivity.this, "Sucesso ao fazer login", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Toast.makeText(LoginActivity.this, "Erro ao recuperar dados do usuario logado", Toast.LENGTH_LONG).show();
+                        }
+                    };
+                    firebase.addListenerForSingleValueEvent(valueEventListenerUsuario);
                 }else{
 
                     String erroExececao;

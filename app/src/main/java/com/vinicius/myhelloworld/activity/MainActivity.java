@@ -182,8 +182,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void Configura(){
 
-        Intent intent = new Intent(MainActivity.this, ConfiguraActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainActivity.this, ConfiguraActivity.class);
+        //startActivity(intent);
     }
 
 }
