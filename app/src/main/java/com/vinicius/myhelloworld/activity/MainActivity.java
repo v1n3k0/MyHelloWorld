@@ -2,6 +2,7 @@ package com.vinicius.myhelloworld.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -77,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.item_configuracao:
-                Configura();
+            case R.id.item_redefine_senha:
+                RedefiniSenha();
                 return true;
             case R.id.item_sai:
                 deslogaUsuario();
@@ -180,10 +183,47 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void Configura(){
+    private void RedefiniSenha(){
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
 
-        //Intent intent = new Intent(MainActivity.this, ConfiguraActivity.class);
-        //startActivity(intent);
+        //Configurações do Dialog
+        alertDialog.setTitle("Redefinir Senha");
+        alertDialog.setMessage("Um E-mail será enviado para redefinição de senha");
+        alertDialog.setCancelable(false);
+
+        //Configurar botões
+        alertDialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                //Instacia do usuario logado
+                autenticacao = ConfiguracaoFireBase.getFirebaseAutenticacao();
+
+                //Preferencias do usuario
+                Preferencias preferencias = new Preferencias(MainActivity.this);
+                String email = Base64Custom.decodificarBase64(preferencias.getIdentificador());
+
+                autenticacao.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(MainActivity.this, "E-mail enviado", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+            }
+        });
+
+        alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        alertDialog.create();
+        alertDialog.show();
     }
 
 }
