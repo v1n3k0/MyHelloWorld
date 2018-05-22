@@ -6,6 +6,7 @@
     <string name="botao_logar">Logar</string>
     <string name="titulo">My Hello World?</string>
     <string name="texto_cadastre">Não tem conta? Cadastre-se</string>
+    <string name="texto_esqueci_senha">Esqueceu a senha?</string>
     <string name="botao_cadastrar">Cadastrar</string>
     <string name="item_redefine_senha">Redefinir Senha</string>
     <string name="item_sair">Sair</string>

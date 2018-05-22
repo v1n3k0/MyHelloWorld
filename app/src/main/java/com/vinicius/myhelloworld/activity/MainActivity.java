@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.item_redefine_senha:
-                RedefiniSenha();
+                RedefineSenha();
                 return true;
             case R.id.item_sai:
                 deslogaUsuario();
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void RedefiniSenha(){
+    private void RedefineSenha(){
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
 
         //Configurações do Dialog

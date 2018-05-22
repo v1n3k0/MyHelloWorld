@@ -162,4 +162,12 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    //Abre a view de redefinir senha
+    public void abreRedefineSenha(View v){
+
+        Intent intent = new Intent(LoginActivity.this, RedefineSenhaActivity.class);
+        startActivity(intent);
+
+    }
 }
