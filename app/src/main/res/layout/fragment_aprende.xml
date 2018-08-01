@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".fragment.AprendeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/lv_aula"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Aprender"
-        android:textColor="@android:color/black" />
+        android:divider="@color/cinza"
+        android:dividerHeight="1dp"/>
 
 </FrameLayout>

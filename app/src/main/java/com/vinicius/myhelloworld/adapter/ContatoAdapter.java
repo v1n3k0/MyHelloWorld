@@ -38,11 +38,11 @@ public class ContatoAdapter extends ArrayAdapter<Contato> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
             //Montar view a partir do xml
-            view = inflater.inflate(R.layout.lista_contato, parent, false);
+            view = inflater.inflate(R.layout.lista_fragment, parent, false);
 
             //Recupera elemento para exibição
-            TextView nomeContato = view.findViewById(R.id.tv_nome);
-            TextView emailContato = view.findViewById(R.id.tv_email);
+            TextView nomeContato = view.findViewById(R.id.tv_titulo);
+            TextView emailContato = view.findViewById(R.id.tv_subtitulo);
 
             Contato contato = contatos.get(position);
             nomeContato.setText(contato.getNome());
