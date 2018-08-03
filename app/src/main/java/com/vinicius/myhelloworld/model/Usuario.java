@@ -10,6 +10,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private int experiencia;
+    private String ultimaAula;
 
     public Usuario() {
     }
@@ -51,5 +53,25 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getExperiencia() {
+        return experiencia % 100;
+    }
+
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
+
+    public String getUltimaAula() {
+        return ultimaAula;
+    }
+
+    public void setUltimaAula(String ultimaAula) {
+        this.ultimaAula = ultimaAula;
+    }
+
+    public int getLevel(){
+        return experiencia / 100;
     }
 }

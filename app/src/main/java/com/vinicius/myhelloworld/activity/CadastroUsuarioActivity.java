@@ -49,6 +49,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 usuario.setNome(nome.getText().toString());
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
+                usuario.setExperiencia(0);
+                usuario.setUltimaAula("Nenhuma");
                 cadastroUsuario();
             }
         });
