@@ -35,7 +35,6 @@ public class ContatoFragment extends Fragment {
     private DatabaseReference firebase;
     private ValueEventListener valueEventListenerContatos;
 
-
     public ContatoFragment() {
         // Required empty public constructor
     }
@@ -89,7 +88,6 @@ public class ContatoFragment extends Fragment {
 
                     Contato contato = dado.getValue(Contato.class);
                     contatos.add(contato);
-
                 }
 
                 adapter.notifyDataSetChanged();

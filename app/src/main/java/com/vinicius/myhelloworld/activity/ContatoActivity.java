@@ -69,7 +69,7 @@ public class ContatoActivity extends AppCompatActivity {
                     email.setText(usuarioContato.getEmail());
                     ultimaAula.setText(usuarioContato.getUltimaAula());
                     level.setText(Integer.toString(usuarioContato.getLevel()));
-                    experiencia.setText(Integer.toString(usuarioContato.getExperiencia()));
+                    experiencia.setText(Integer.toString(usuarioContato.getExperiencia()) + " / 100");
                 }
             }
 
