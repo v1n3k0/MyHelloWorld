@@ -1,11 +1,13 @@
 package com.vinicius.myhelloworld.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,9 +16,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.vinicius.myhelloworld.R;
+import com.vinicius.myhelloworld.activity.AulaActivity;
 import com.vinicius.myhelloworld.adapter.AulaAdapter;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
-import com.vinicius.myhelloworld.helper.Preferencias;
 import com.vinicius.myhelloworld.model.Aula;
 
 import java.util.ArrayList;
@@ -92,6 +94,23 @@ public class AprendeFragment extends Fragment {
 
             }
         };
+
+        //OnClick item da lista
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(getActivity(), AulaActivity.class);
+
+                //Recuperar contato
+                Aula aula = aulas.get(i);
+
+                //Enviando dados para conversa activity
+                intent.putExtra("aula", aula);
+
+                startActivity(intent);
+            }
+        });
 
         // Inflate the layout for this fragment
         return view;
