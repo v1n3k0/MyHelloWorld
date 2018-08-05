@@ -27,7 +27,8 @@
         <activity
             android:name=".activity.ContatoActivity"
             android:parentActivityName=".activity.MainActivity" />
-        <activity android:name=".activity.RedefineSenhaActivity"></activity>
+        <activity android:name=".activity.RedefineSenhaActivity" />
+        <activity android:name=".activity.AulaActivity"></activity>
     </application>
 
 </manifest>
