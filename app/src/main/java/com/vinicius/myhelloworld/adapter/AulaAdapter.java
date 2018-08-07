@@ -42,6 +42,7 @@ public class AulaAdapter extends ArrayAdapter<Aula> {
             TextView nomeAula = view.findViewById(R.id.tv_titulo);
             TextView aulaAula = view.findViewById(R.id.tv_subtitulo);
 
+            //Editar campos da view
             Aula aula = aulas.get(position);
             nomeAula.setText(aula.getNome());
             aulaAula.setText(aula.getAula());
