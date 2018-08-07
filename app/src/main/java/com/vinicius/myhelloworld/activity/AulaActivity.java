@@ -24,7 +24,7 @@ public class AulaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aula);
 
-        texto = findViewById(R.id.textView_aula);
+        texto = findViewById(R.id.textView_questao);
 
         //Recuperar dados da intent
         Intent intent = getIntent();
