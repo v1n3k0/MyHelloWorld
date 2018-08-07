@@ -29,7 +29,7 @@ public class Exercicio implements Serializable {
         return respostas;
     }
 
-    public void setRespostas(ArrayList<Resposta> repostas) {
-        this.respostas = repostas;
+    public void setRespostas(ArrayList<Resposta> respostas) {
+        this.respostas = respostas;
     }
 }
