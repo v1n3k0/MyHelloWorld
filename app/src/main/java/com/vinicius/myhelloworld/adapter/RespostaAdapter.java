@@ -45,7 +45,7 @@ public class RespostaAdapter extends ArrayAdapter<Resposta> {
 
             //Editar campos da view
             Resposta resposta = respostas.get(position);
-            tvId.setText(Integer.toString(resposta.getId()));
+            tvId.setText(Integer.toString(resposta.getId() + 1));
             tvResposta.setText(resposta.getResposta());
         }
 
