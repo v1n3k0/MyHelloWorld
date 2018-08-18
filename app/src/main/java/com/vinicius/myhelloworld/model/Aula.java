@@ -8,6 +8,8 @@ public class Aula implements Serializable {
     private int id;
     private String nome;
     private String aula;
+    private int peso;
+    private int pontos;
     private ArrayList<Exercicio> exercicios;
 
     public int getId() {
@@ -32,6 +34,22 @@ public class Aula implements Serializable {
 
     public void setAula(String aula) {
         this.aula = aula;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
     }
 
     public ArrayList<Exercicio> getExercicios() {
