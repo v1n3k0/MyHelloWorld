@@ -28,6 +28,8 @@ public class AulaActivity extends AppCompatActivity {
     private ArrayList<Resposta> respostas;
     private int numeroExercicio;
     private int tamanhoListaExercicio;
+    private int peso;
+    private int ponto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,11 @@ public class AulaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent != null) aula = (Aula) intent.getSerializableExtra("aula");
 
-
+        //Definição inicial
         tamanhoListaExercicio = aula.getExercicios().size();
         numeroExercicio = 0;
+        peso = aula.getPeso();
+        //Iniciar primeiro exercicio
         editarView(aula.getExercicios().get(numeroExercicio));
 
         //Click da lista de respostas
@@ -52,16 +56,7 @@ public class AulaActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //Lista de resposta
-                Resposta resposta = respostas.get(position);
-
-                numeroExercicio++;
-                if(resposta.isCerto() && numeroExercicio < tamanhoListaExercicio){
-                    editarView(aula.getExercicios().get(numeroExercicio));
-                }else{
-                    Toast.makeText(AulaActivity.this, "Resposta errada. Tente novamente", Toast.LENGTH_SHORT).show();
-                }
-
+                verificarResposta(position);
             }
         });
     }
@@ -69,6 +64,9 @@ public class AulaActivity extends AppCompatActivity {
     //Mostra a questão e respostas
     private void editarView(Exercicio exercicio){
 
+        //Peso inicial do exercicio
+        ponto = peso;
+        //Lista de resposta
         respostas = exercicio.getRespostas();
 
         //Mostrar Questão
@@ -78,5 +76,35 @@ public class AulaActivity extends AppCompatActivity {
         //Montar listView Adapter
         adapter = new RespostaAdapter(this, respostas);
         listView.setAdapter(adapter);
+    }
+
+    //Verificar reposta selecionada
+    private void verificarResposta(int position){
+        //Lista de resposta
+        Resposta resposta = respostas.get(position);
+
+        if(resposta.isCerto()){
+            //proximo exercicio
+            numeroExercicio++;
+            //Soma pontuação
+            aula.setPontos(aula.getPontos() + ponto);
+            Toast.makeText(AulaActivity.this, "Resposta Correta", Toast.LENGTH_SHORT).show();
+
+            if(numeroExercicio < tamanhoListaExercicio){
+                editarView(aula.getExercicios().get(numeroExercicio));
+            }else{
+                //Toast.makeText(AulaActivity.this, "Fim da Aula " + aula.getPontos(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, AulaFimActivity.class);
+
+                //Enviando dados para conversa activity
+                intent.putExtra("aula", aula);
+
+                startActivity(intent);
+            }
+        }else{
+            //Penaliza a pontuação
+            ponto = ponto / 2;
+            Toast.makeText(AulaActivity.this, "Resposta errada. Tente novamente", Toast.LENGTH_SHORT).show();
+        }
     }
 }
