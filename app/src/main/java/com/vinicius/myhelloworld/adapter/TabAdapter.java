@@ -6,11 +6,12 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.vinicius.myhelloworld.fragment.AprendeFragment;
 import com.vinicius.myhelloworld.fragment.ContatoFragment;
+import com.vinicius.myhelloworld.fragment.PerfilFragment;
 
 
 public class TabAdapter extends FragmentStatePagerAdapter{
 
-    private String[] tituloAbas = {"APRENDER", "CONTATOS"};
+    private String[] tituloAbas = {"APRENDER", "CONTATOS", "PERFIL"};
 
     public TabAdapter(FragmentManager fm) {
         super(fm);
@@ -27,6 +28,9 @@ public class TabAdapter extends FragmentStatePagerAdapter{
                 break;
             case 1:
                 fragment = new ContatoFragment();
+                break;
+            case 2:
+                fragment = new PerfilFragment();
                 break;
         }
 
