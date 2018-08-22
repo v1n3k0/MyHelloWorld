@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item_sai:
                 deslogaUsuario();
                 return true;
-            case R.id.item_pesquisa:
-                return true;
             case R.id.item_adiciona:
                 addContato();
                 return true;

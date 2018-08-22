@@ -58,6 +58,7 @@ public class AulaFimActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     usuario = dataSnapshot.getValue(Usuario.class);
 
+                    usuario.setUltimaAula(aula.getNome());
                     usuario.setExperiencia(usuario.getExperiencia() + aula.getPontos());
                     usuario.setId(identificadorUsuarioLogado);
                     usuario.salvar();
