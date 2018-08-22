@@ -22,6 +22,7 @@ public class AulaActivity extends AppCompatActivity {
 
     private TextView questao;
     private TextView questaoId;
+    private TextView numeroPergunta;
     private Aula aula;
     private ArrayAdapter adapter;
     private ListView listView;
@@ -38,6 +39,7 @@ public class AulaActivity extends AppCompatActivity {
 
         questao = findViewById(R.id.textView_questao);
         questaoId = findViewById(R.id.textView_questao_id);
+        numeroPergunta = findViewById(R.id.textView_aula_numeroPergunta);
         listView = findViewById(R.id.lv_repostas);
 
         //Recuperar dados da intent
@@ -76,6 +78,9 @@ public class AulaActivity extends AppCompatActivity {
         //Montar listView Adapter
         adapter = new RespostaAdapter(this, respostas);
         listView.setAdapter(adapter);
+
+        //Numero de perguntas
+        numeroPergunta.setText((exercicio.getId() + 1) + " / " + tamanhoListaExercicio );
     }
 
     //Verificar reposta selecionada
