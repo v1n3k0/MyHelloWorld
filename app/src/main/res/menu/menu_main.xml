@@ -11,4 +11,7 @@
     <item android:id="@+id/item_adiciona" android:title="@string/item_adiciona"
         android:orderInCategory="300" app:showAsAction="ifRoom" android:icon="@drawable/ic_person_add"/>
 
+    <item android:id="@+id/item_perfil" android:title="@string/item_perfil"
+        android:orderInCategory="400" app:showAsAction="ifRoom" android:icon="@drawable/ic_person"/>
+
 </menu>

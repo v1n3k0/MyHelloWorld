@@ -81,13 +81,16 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.item_redefine_senha:
-                RedefineSenha();
+                redefineSenha();
                 return true;
             case R.id.item_sai:
                 deslogaUsuario();
                 return true;
             case R.id.item_adiciona:
                 addContato();
+                return true;
+            case R.id.item_perfil:
+                perfil();
                 return true;
              default:
                 return super.onOptionsItemSelected(item);
@@ -96,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addContato() {
+
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
 
         //Configurações do Dialog
@@ -181,7 +185,8 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void RedefineSenha(){
+    private void redefineSenha(){
+
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
 
         //Configurações do Dialog
@@ -222,6 +227,12 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialog.create();
         alertDialog.show();
+    }
+
+    private void perfil(){
+
+        Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
+        startActivity(intent);
     }
 
 }

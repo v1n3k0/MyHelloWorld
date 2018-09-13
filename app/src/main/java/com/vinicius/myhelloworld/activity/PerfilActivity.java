@@ -1,11 +1,8 @@
-package com.vinicius.myhelloworld.fragment;
+package com.vinicius.myhelloworld.activity;
 
-
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -17,37 +14,35 @@ import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
 import com.vinicius.myhelloworld.helper.Preferencias;
 import com.vinicius.myhelloworld.model.Usuario;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class PerfilFragment extends Fragment {
+public class PerfilActivity extends AppCompatActivity {
 
     private TextView nome;
     private TextView email;
     private TextView ultimaAula;
     private TextView level;
     private TextView experiencia;
+    private Toolbar toolbar;
     private Usuario usuario;
     private DatabaseReference firebase;
 
-    public PerfilFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_perfil, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_perfil);
 
-        nome = view.findViewById(R.id.textView_perfil_nome);
-        email = view.findViewById(R.id.textView_perfil_email);
-        ultimaAula = view.findViewById(R.id.textView_perfil_ultimaAula);
-        level = view.findViewById(R.id.textView_perfil_level);
-        experiencia = view.findViewById(R.id.textView_perfil_experiencia);;
+        nome = findViewById(R.id.textView_perfil_nome);
+        email = findViewById(R.id.textView_perfil_email);
+        ultimaAula = findViewById(R.id.textView_perfil_ultimaAula);
+        level = findViewById(R.id.textView_perfil_level);
+        experiencia = findViewById(R.id.textView_perfil_experiencia);
+        toolbar = findViewById(R.id.tb_perfil);
+
+        //Configurar Toolbar
+        toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
+        setSupportActionBar(toolbar);
 
         //Recuperar contatos do firebase
-        Preferencias preferencias = new Preferencias(getActivity());
+        Preferencias preferencias = new Preferencias(PerfilActivity.this);
         String identificadorUsuarioLogado = preferencias.getIdentificador();
         firebase = ConfiguracaoFireBase.getFirebase()
                 .child("Usuario")
@@ -65,6 +60,7 @@ public class PerfilFragment extends Fragment {
                     ultimaAula.setText(usuario.getUltimaAula());
                     level.setText(Integer.toString(usuario.getLevel()));
                     experiencia.setText(Integer.toString(usuario.getExperiencia()));
+                    toolbar.setTitle(usuario.getNome());
                 }
             }
 
@@ -73,9 +69,5 @@ public class PerfilFragment extends Fragment {
 
             }
         });
-
-        // Inflate the layout for this fragment
-        return view;
     }
-
 }
