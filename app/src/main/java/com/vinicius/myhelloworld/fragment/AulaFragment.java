@@ -26,7 +26,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AprendeFragment extends Fragment {
+public class AulaFragment extends Fragment {
 
     private ListView listView;
     private ArrayAdapter adapter;
@@ -34,7 +34,7 @@ public class AprendeFragment extends Fragment {
     private DatabaseReference firebase;
     private ValueEventListener valueEventListenerAulas;
 
-    public AprendeFragment() {
+    public AulaFragment() {
         // Required empty public constructor
     }
 

@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AprendeFragment">
+    tools:context=".fragment.AulaFragment">
 
     <ListView
         android:id="@+id/lv_aula"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/cinza"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="1dp" />
 
 </FrameLayout>

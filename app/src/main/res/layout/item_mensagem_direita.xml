@@ -4,18 +4,20 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
         android:background="@color/colorPrimary"
-        android:layout_alignParentRight="true">
+        android:orientation="vertical"
+        android:paddingRight="8dp">
 
         <TextView
             android:id="@+id/tv_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="8dp"
-            android:paddingRight="2dp"
+            android:paddingRight="8dp"
             android:paddingTop="2dp"
             android:text="Nome"
             android:textColor="@android:color/white"
@@ -25,9 +27,12 @@
             android:id="@+id/tv_mensagem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:text="Mensagem..."
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

@@ -20,6 +20,7 @@ import com.vinicius.myhelloworld.adapter.MensagemAdapter;
 import com.vinicius.myhelloworld.config.ConfiguracaoFireBase;
 import com.vinicius.myhelloworld.helper.Preferencias;
 import com.vinicius.myhelloworld.model.Aula;
+import com.vinicius.myhelloworld.model.Chat;
 import com.vinicius.myhelloworld.model.Mensagem;
 import com.vinicius.myhelloworld.model.Usuario;
 
@@ -28,8 +29,7 @@ import java.util.ArrayList;
 public class ChatActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private Usuario usuario;
-    private Aula aula;
+    private Chat chat;
     private EditText editMensagem;
     private ImageButton btMensagem;
     private DatabaseReference firebase;
@@ -37,6 +37,8 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayList<Mensagem> mensagens;
     private ArrayAdapter<Mensagem> adapter;
     private ValueEventListener valueEventListener;
+    private String identificadorUsuario;
+    private String nomeUsuario;
 
     @Override
     protected void onStop() {
@@ -56,16 +58,16 @@ public class ChatActivity extends AppCompatActivity {
         listView = findViewById(R.id.lv_conversas);
 
         //dados do usuario logado
-        Preferencias preferencias = new Preferencias(ChatActivity.this);
-        usuario.setId(preferencias.getIdentificador());
-        usuario.setNome(preferencias.getNome());
+        Preferencias preferencias = new Preferencias(this);
+        identificadorUsuario = preferencias.getIdentificador();
+        nomeUsuario = preferencias.getNome();
 
         //Recuperar dados da intent
         Intent intent = getIntent();
-        if(intent != null) aula = (Aula) intent.getSerializableExtra("aula");
+        if(intent != null) chat = (Chat) intent.getSerializableExtra("chat");
 
         //Configurar toolbar
-        toolbar.setTitle(aula.getNome());
+        toolbar.setTitle(chat.getNome());
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
 
@@ -76,8 +78,9 @@ public class ChatActivity extends AppCompatActivity {
 
         //Recuperar mensagens do firebase
         firebase = ConfiguracaoFireBase.getFirebase()
-                .child("Mensagem")
-                .child(String.valueOf(aula.getId()));
+                .child("Chat")
+                .child(String.valueOf(chat.getId()))
+                .child("mensagens");
 
         //Criar listener para mensagens
         valueEventListener = new ValueEventListener() {
@@ -114,8 +117,8 @@ public class ChatActivity extends AppCompatActivity {
                 }else {
 
                     Mensagem mensagem = new Mensagem();
-                    mensagem.setIdUsuario(usuario.getId());
-                    mensagem.setNomeUsuario(usuario.getNome());
+                    mensagem.setIdUsuario(identificadorUsuario);
+                    mensagem.setNomeUsuario(nomeUsuario);
                     mensagem.setMensagem(textoMensagem);
 
                     //Salvar mensagem
@@ -134,10 +137,7 @@ public class ChatActivity extends AppCompatActivity {
     private boolean salvaMensagem(Mensagem mensagem){
         try{
 
-            firebase = ConfiguracaoFireBase.getFirebase().child("Mensagens");
-
-            firebase.child(String.valueOf(aula.getId()))
-                    .push()
+            firebase.push()
                     .setValue(mensagem);
 
             return true;
