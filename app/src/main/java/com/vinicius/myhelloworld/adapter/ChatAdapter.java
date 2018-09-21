@@ -41,12 +41,12 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
             view = inflater.inflate(R.layout.lista_fragment, parent, false);
 
             //Recupera elemento para exibição
-            TextView nome = view.findViewById(R.id.tv_titulo);
-            TextView aula = view.findViewById(R.id.tv_subtitulo);
+            TextView titulo = view.findViewById(R.id.tv_titulo);
+            TextView subtitulo = view.findViewById(R.id.tv_subtitulo);
 
             Chat chat = chats.get(position);
-            nome.setText(chat.getNome());
-            aula.setText(chat.getAula());
+            subtitulo.setText(chat.getNome());
+            titulo.setText(chat.getAula());
 
         }
 
