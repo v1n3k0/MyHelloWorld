@@ -53,7 +53,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.PerfilActivity"
+        <activity
+            android:name=".activity.PerfilActivity"
             android:parentActivityName=".activity.MainActivity">
 
             <!-- Define Activity Pai versões antigas do android -->
@@ -61,6 +62,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.EditarContaActivity"></activity>
     </application>
 
 </manifest>

@@ -45,8 +45,8 @@ public class ChatAdapter extends ArrayAdapter<Chat> {
             TextView subtitulo = view.findViewById(R.id.tv_subtitulo);
 
             Chat chat = chats.get(position);
-            subtitulo.setText(chat.getNome());
-            titulo.setText(chat.getAula());
+            titulo.setText(chat.getNome());
+            subtitulo.setText(chat.getAula().replace("Aula", "Chat") );
 
         }
 

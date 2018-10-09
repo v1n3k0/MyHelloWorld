@@ -11,7 +11,7 @@ import com.vinicius.myhelloworld.fragment.ContatoFragment;
 
 public class TabAdapter extends FragmentStatePagerAdapter{
 
-    private String[] tituloAbas = {"AULAS", "CHATS", "CONTATOS"};
+    private String[] tituloAbas = {"AULAS", "CHATS", "AMIGOS"};
 
     public TabAdapter(FragmentManager fm) {
         super(fm);

@@ -31,6 +31,11 @@ public class Preferencias {
         return preferences.getString(CHAVE_IDENTIFICADOR, null);
     }
 
+    public void setNome(String nomeUsuario){
+        editor.putString(CHAVE_NOME, nomeUsuario);
+        editor.commit();
+    }
+
     public String getNome(){
         return preferences.getString(CHAVE_NOME, null);
     }

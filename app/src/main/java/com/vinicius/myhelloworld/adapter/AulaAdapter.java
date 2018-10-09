@@ -39,13 +39,13 @@ public class AulaAdapter extends ArrayAdapter<Aula> {
             view = inflater.inflate(R.layout.lista_fragment, parent, false);
 
             //Recupera elemento para exibição
-            TextView nomeAula = view.findViewById(R.id.tv_titulo);
-            TextView aulaAula = view.findViewById(R.id.tv_subtitulo);
+            TextView titulo = view.findViewById(R.id.tv_titulo);
+            TextView subtitulo = view.findViewById(R.id.tv_subtitulo);
 
             //Editar campos da view
             Aula aula = aulas.get(position);
-            nomeAula.setText(aula.getNome());
-            aulaAula.setText(aula.getAula());
+            titulo.setText(aula.getAula());
+            subtitulo.setText(aula.getNome());
         }
 
         return view;

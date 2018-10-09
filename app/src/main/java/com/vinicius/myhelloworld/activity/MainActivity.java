@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
+            case R.id.item_editar_conta:
+                editarConta();
+                return true;
             case R.id.item_redefine_senha:
                 redefineSenha();
                 return true;
@@ -232,6 +235,12 @@ public class MainActivity extends AppCompatActivity {
     private void perfil(){
 
         Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
+        startActivity(intent);
+    }
+
+    private void editarConta(){
+
+        Intent intent = new Intent(MainActivity.this, EditarContaActivity.class);
         startActivity(intent);
     }
 
